@@ -30,7 +30,9 @@ class VaccineSlot:
             'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36'}
         #resp = eval(requests.get(self.url, proxies=urllib.request.getproxies()).text)
         #resp = eval(urllib.request.urlopen(self.url).read().decode('utf-8'))
-        resp = eval(requests.get(self.url, headers=headers).content.decode('utf-8'),proxies=proxies)
+        resp = requests.get(self.url, headers=headers).content
+        print("responce:",resp)
+        resp = eval(resp.decode('utf-8'),proxies=proxies)
         all_centers = resp['centers']
         min_age = self.data['min_age']
         print("age=",min_age)
