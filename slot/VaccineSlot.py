@@ -22,10 +22,10 @@ class VaccineSlot:
 
 
     def get_available_slots(self):
-	proxies = {
-	 "http": "http://14.140.131.82:3128",
-	 "https": "http://14.140.131.82:3128"
-	}
+        proxies = {
+         "http": "http://14.140.131.82:3128",
+         "https": "http://14.140.131.82:3128"
+        }
         headers = {
             'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36'}
         #resp = eval(requests.get(self.url, proxies=urllib.request.getproxies()).text)
