@@ -32,7 +32,7 @@ class VaccineSlot:
         #resp = eval(urllib.request.urlopen(self.url).read().decode('utf-8'))
         resp = requests.get(self.url, headers=headers).content
         print("responce:",resp)
-        resp = eval(resp.decode('utf-8'),proxies=proxies)
+        resp = eval(resp.decode('utf-8'))
         all_centers = resp['centers']
         min_age = self.data['min_age']
         print("age=",min_age)
