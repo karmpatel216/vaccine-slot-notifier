@@ -40,6 +40,15 @@ class data(db.Model):
     def __repr__(self):
         return f"Data('{self.email}','{self.min_age}','{self.by}')"
 
+class Feedback(db.Model):
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(50), unique=False, nullable=True)
+    feedback = db.Column(db.String(1000), unique=False, nullable=True)
+
+    def __repr__(self):
+        return f"Feedback('{self.name}')"
+
 @app.route("/",methods=["POST","GET"])
 def home():
     db.create_all()
@@ -161,6 +170,25 @@ def carbrand():
             OutputArray.append(outputObj)
         #print(OutputArray)
     return jsonify(OutputArray)
+
+@app.route("/feedback",methods=["POST","GET"])
+def feedback():
+    if request.method == 'POST':
+        name = request.form["name"]
+        feedback = request.form["feedback"]
+        if feedback == "":
+            flash("enter feedback","danger")
+            return redirect(url_for("home"))
+        try:
+            feedback = Feedback(name=name,feedback=feedback)
+            db.session.add(feedback)
+            db.session.commit()
+            flash("Your response submitted","success")
+        except Exception as e:
+            print(e)
+            flash("something goes wrong, please try again", "danger")
+    return redirect(url_for("home"))
+
 
 
 if __name__ == "__main__":

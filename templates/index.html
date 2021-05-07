@@ -65,6 +65,8 @@
                                         <li><a href="#subscribe">Subscribe</a>
                                         <li class="mega-menu"><a href="#unsubscribe">Unsubscribe</a>
                                         </li>
+                                        <li class="mega-menu"><a href="#feedback">Feedback</a>
+                                        </li>
 
                                     </ul>
                                 </nav>
@@ -218,11 +220,9 @@
                     </div>
                 </div>
             </div>
+    </div>
         </section>
          <section class="donate-page-area pt-90 pb-80" id="unsubscribe">
-
-
-
                 <div class="row">
                     <div class="col-lg-9 col-md-12 ml-auto mr-auto">
                         <div class="donate-content">
@@ -254,8 +254,54 @@
                     </div>
                 </div>
             </div>
-               <div style="padding-left :40%;">
-            <h5>User count: {{ user_count }}</h5>
+
+        </section>
+
+         <section class="donate-page-area pt-90 pb-80" id="feedback">
+                <div class="row">
+                    <div class="col-lg-9 col-md-12 ml-auto mr-auto">
+                        <div class="donate-content">
+                            <div class="donate-form-container">
+                                <div class="donate-form-title">
+                                    <h3>Feedback</h3>
+                                    <h5>Any suggestions,bug report or feedback will be appreciated</h5>
+                                </div>
+                                <div class="donation-form quick-donation-section donate-page">
+                                    <form action="/feedback" class="form" method="POST">
+                                         <div class="tg-donetship">
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="single-input mb-30" style="width: 1000px">
+                                                        <label >Your Name:</label>
+                                                        <input type="text" name="name">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="tg-donetship">
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="single-input mb-30" style="width: 1000px">
+                                                        <label >Feedback</label>
+                                                        <input type="text" name="feedback">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="donate-btn text-center">
+                                            <button type="submit">Send</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+               <div >
+            <h7 style="padding-left :13%;" >User count: {{ user_count }}</h7><br>
+                   <h7 style="padding-left :13%;">Created by:<a href="https://www.linkedin.com/in/karm-patel-865825196" style="color:blue;">Karm Patel</a></h7>
         </div>
         </section>
 
