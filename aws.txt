@@ -1,3 +1,5 @@
 sudo service nginx restart
 sudo service gunicorn3 restart
 sudo service gunicorn3 status
+
+pid : 16415
