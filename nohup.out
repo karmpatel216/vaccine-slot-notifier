@@ -1,0 +1,13 @@
+/home/ubuntu/.local/lib/python3.6/site-packages/flask_sqlalchemy/__init__.py:873: FSADeprecationWarning: SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and will be disabled by default in the future.  Set it to True or False to suppress this warning.
+  'SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and '
+age= 18
+age= 18
+age= 18
+vaccine is available in Ahmedabad Corporation
+mail sent to-sangita13375@gmail.com
+age= 18
+*********************************
+Traceback (most recent call last):
+  File "check.py", line 44, in <module>
+    time.sleep(600)
+KeyboardInterrupt

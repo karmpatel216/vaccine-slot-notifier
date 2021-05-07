@@ -12,24 +12,16 @@ class VaccineSlot:
         if data["by_district"] == 1:
 
             with open("district_ids.json", "r") as fp:
-                district_ids = json.load(fp)
-                self.dist_id = district_ids[data["state"]][data["district"]]
+                self.district_ids = json.load(fp)
+            dist_id = self.district_ids[data["state"]][data["district"]]
 
-    def get_available_slots(self):
-        today = datetime.today().date()
-        day = str(today.day)
-        month = str(today.month)
-        year = str(today.year)
-        day = day if len(day) == 2 else "0"+day
-        month = month if len(day) == 2 else "0"+month
-
-        date = day + "-" + month + "-" + year
-        if self.data["by_district"] == 1:
-            self.url = f"https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id={self.dist_id}&date={date}"
+            self.url = f"https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id={dist_id}&date={date}"
         else:
-            pin = self.data["pin"]
+            pin = data["pin"]
             self.url = f"https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin?pincode={pin}&date={date}"
 
+
+    def get_available_slots(self):
         proxies = {
          "http": "http://14.140.131.82:3128",
          "https": "http://14.140.131.82:3128"
@@ -38,9 +30,8 @@ class VaccineSlot:
             'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36'}
         #resp = eval(requests.get(self.url, proxies=urllib.request.getproxies()).text)
         #resp = eval(urllib.request.urlopen(self.url).read().decode('utf-8'))
-        resp = requests.get(self.url, headers=headers).content
-        #print("responce:",resp)
-        resp = eval(resp.decode('utf-8'))
+        
+	resp = eval)
         all_centers = resp['centers']
         min_age = self.data['min_age']
         print("age=",min_age)
@@ -50,7 +41,7 @@ class VaccineSlot:
             if each['sessions']:
                 for sess in each['sessions']:
                     #print(sess)
-                    if sess['min_age_limit'] == min_age and sess["available_capacity"] >= 2:
+                    if sess['min_age_limit'] == min_age and sess["available_capacity"] >= 1:
                         data = {"available_capacity": sess["available_capacity"]
                             , "date": sess["date"]}
                         if center_name not in available:
