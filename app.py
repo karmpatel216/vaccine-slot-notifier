@@ -5,6 +5,7 @@ from slot import VaccineSlot
 from datetime import datetime
 import pickle
 from flask_mail import Mail, Message
+import os
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///vaccine.db'
@@ -20,7 +21,8 @@ app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
 mail = Mail(app)
 
-with open("slot/district_ids1.json", "r") as fp:
+current_path = os.getcwd()
+with open(os.path.join(current_path,"slot","district_ids1.json"), "r") as fp:
     district_ids = json.load(fp)
 
 class data(db.Model):
@@ -70,10 +72,10 @@ def home():
             info["pin"] = pin
         obj = VaccineSlot(info)
 
-        objects = pickle.load(open("pickleobjs", "rb"))
+        objects = pickle.load(open(os.path.join(current_path,"pickleobjs"), "rb"))
         #objects = {}
         objects[email] = obj
-        pickle.dump(objects, open("pickleobjs", "wb"))
+        pickle.dump(objects, open(os.path.join(current_path,"pickleobjs"), "wb"))
 
         flash("you are sucessfully subscribed","success")
         return redirect(url_for("home"))
