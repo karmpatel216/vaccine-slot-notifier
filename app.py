@@ -6,6 +6,7 @@ from datetime import datetime
 import pickle
 from flask_mail import Mail, Message
 import os
+import re
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///vaccine.db'
@@ -45,11 +46,42 @@ def home():
     states = district_ids.keys()
     if request.method == "POST":
         email = request.form["email"]
+        regex = '^(\w|\.|\_|\-)+[@](\w|\_|\-|\.)+[.]\w{2,3}$'
+        if not (re.search(regex, email)):
+            flash("Enter Valid Email id","danger")
+            return redirect(url_for("home"))
+
         by = request.form["by"]
         pin = request.form["pin"]
         state = request.form["state"]
         district = request.form["district"]
+        if by == "Pincode":
+            district = ""
+            state = ""
+            if len(pin) == 6:
+                try:
+                    int(pin)
+                except:
+                    flash("enter valid pincode","danger")
+                    return redirect(url_for("home"))
+            else:
+                flash("enter valid pincode", "danger")
+                return redirect(url_for("home"))
+        else:
+            pin = ""
+            if state == "select state":
+                flash("select state","danger")
+                return redirect(url_for("home"))
+            else:
+                if district == "select district":
+                    flash("select district","danger")
+                    return redirect(url_for("home"))
+
         age = request.form["age"]
+
+        if data.query.filter_by(email=email).first():
+            flash("email id already taken","danger")
+            return redirect(url_for("home"))
 
         row = data(by=by, pin=pin,district=district,state=state,min_age=age,email=email)
         db.session.add(row)
@@ -81,6 +113,36 @@ def home():
         return redirect(url_for("home"))
 
     return render_template("index.html",states=states)
+@app.route("/unsubscribe",methods=["POST","GET"])
+def unsubscribe():
+    if request.method == 'POST':
+        email = request.form["email"]
+        regex = '^(\w|\.|\_|\-)+[@](\w|\_|\-|\.)+[.]\w{2,3}$'
+        if not (re.search(regex, email)):
+            flash("Enter Valid Email id", "danger")
+            return redirect(url_for("home"))
+
+        row = data.query.filter_by(email=email)
+        if row.first():
+            row.delete()
+            db.session.commit()
+            objects = pickle.load(open(os.path.join(current_path, "pickleobjs"), "rb"))
+            print(f"before:{objects}")
+            try:
+                del objects[email]
+                pickle.dump(objects, open(os.path.join(current_path, "pickleobjs"), "wb"))
+            except:
+                print("key not found")
+            print(f"after:{objects}")
+            flash("Unsubscibed!","success")
+        else:
+            flash("Email id does not exist!","danger")
+
+    return redirect(url_for("home"))
+        #delete from database
+
+
+
 
 @app.route("/district",methods=["POST","GET"])
 def carbrand():

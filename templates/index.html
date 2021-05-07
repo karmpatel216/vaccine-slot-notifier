@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Smart Attendance</title>
+    <title>GetVaccinated</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -25,12 +25,60 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css" />
     <!-- Color Css Files End -->
+        <!-- Favicon
+    ============================================ -->
+
+
+    <!-- master CSS
+    ============================================ -->
+    <link rel="stylesheet" href="{{url_for('static', filename = 'master.css') }}">
+
+    <!-- Color Css Files Start -->
+    <link rel="alternate stylesheet" type="text/css" href="{{url_for('static', filename = 'switcher/color-one.css') }}"
+        title="color-one" media="screen" />
+    <link rel="alternate stylesheet" type="text/css" href="{{url_for('static', filename = 'switcher/pattren1.css') }}"
+        title="pattren1" media="screen" />
+    <link rel="alternate stylesheet" type="text/css"
+        href="{{url_for('static', filename = 'switcher/background1.css') }}" title="background1" media="screen" />
 
 </head>
 
 <body>
         <script src="{{url_for('static', filename = 'js/jquery.js') }}"></script>
-        <section class="donate-page-area pt-90 pb-80">
+         <!-- End header top -->
+            <!-- Start main menu area -->
+            <div class="main-menu-area" id="sticker">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3 col-xs-12">
+                            <div class="logo ptb-32">
+                                <a href= "{{ url_for('home') }}">
+                                    <h4 style="color:green;">getVaccinated</h4>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-9 col-xs-12">
+                            <div class="main-menu">
+                                <nav>
+                                    <ul>
+                                        <li><a href="#subscribe">Subscribe</a>
+                                        <li class="mega-menu"><a href="#unsubscribe">Unsubscribe</a>
+                                        </li>
+
+                                    </ul>
+                                </nav>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <section class="donate-page-area pt-90 pb-80" id="subscribe">
+         <!-- Start main area -->
+    <div class="main-area">
+        <!-- Start header -->
+        <header>
+
 
 
             <div class="container">
@@ -48,7 +96,8 @@
                         <div class="donate-content">
                             <div class="donate-form-container">
                                 <div class="donate-form-title">
-                                    <h3>Enter Your Details</h3>
+                                    <h3>Subscribe</h3>
+                                    <h5>You will get notified via gmail when vaccine slot is available in your area</h5>
                                 </div>
                                 <div class="donation-form quick-donation-section donate-page">
                                     <form action="/" class="form" method="POST">
@@ -67,7 +116,6 @@
                                                     <div class="single-input mb-30">
                                                         <label>Search By</label><br />
                                                         <select name = "by" class="form-control" style="height: 55px; font-size: 14px;">
-                                                            <option selected>Select your choice</option>
 															<option>Pincode</option>
 															<option>Area</option>
                                                         </select>
@@ -87,7 +135,7 @@
                                                     <div class="single-input mb-30">
                                                         <label>State</label><br />
                                                         <select data-live-search="true" id="state" name = "state" class="form-control" style="height: 55px; font-size: 14px;">
-                                                            <option selected>Select State</option>
+                                                            <option selected>select state</option>
                                                             {% for state in states %}
 															<option>{{ state }}</option>
 
@@ -99,8 +147,8 @@
 												<div class="col-lg-6">
                                                     <div class="single-input mb-30">
                                                         <label >District</label>
-                                                        <select data-live-search="true" id="district" name="district" class="form-control" title="select district" style="height:55px; font-size: 14px;" >
-
+                                                        <select data-live-search="true" id="district" name="district" class="form-control" style="height:55px; font-size: 14px;" >
+                                                        <option>select district</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -146,10 +194,8 @@
                                                     <div class="single-input mb-30">
                                                         <label>Age Group</label><br />
                                                         <select name = "age" class="form-control" style="height: 55px; font-size: 14px;">
-                                                            <option selected>Select the age group</option>
-
                                                             <option>45+</option>
-															<option>18-44</option>
+															<option selected >18-44</option>
 
                                                         </select>
                                                     </div>
@@ -161,7 +207,43 @@
 
 
                                         <div class="donate-btn text-center">
-                                            <button type="submit">Add</button>
+                                            <button type="submit">Subscribe</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+         <section class="donate-page-area pt-90 pb-80" id="unsubscribe">
+
+
+
+                <div class="row">
+                    <div class="col-lg-9 col-md-12 ml-auto mr-auto">
+                        <div class="donate-content">
+                            <div class="donate-form-container">
+                                <div class="donate-form-title">
+                                    <h3>Unsubscribe</h3>
+                                    <h5>Unsubscribe after getting your slot details to avoid unnecessary mails</h5>
+                                </div>
+                                <div class="donation-form quick-donation-section donate-page">
+                                    <form action="/unsubscribe" class="form" method="POST">
+
+                                        <div class="tg-donetship">
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="single-input mb-30" style="width: 1000px">
+                                                        <label >Email</label>
+                                                        <input type="text" name="email">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="donate-btn text-center">
+                                            <button type="submit">Unsubscribe</button>
                                         </div>
                                     </form>
                                 </div>

@@ -12,16 +12,24 @@ class VaccineSlot:
         if data["by_district"] == 1:
 
             with open("district_ids.json", "r") as fp:
-                self.district_ids = json.load(fp)
-            dist_id = self.district_ids[data["state"]][data["district"]]
-
-            self.url = f"https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id={dist_id}&date={date}"
-        else:
-            pin = data["pin"]
-            self.url = f"https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin?pincode={pin}&date={date}"
-
+                district_ids = json.load(fp)
+                self.dist_id = district_ids[data["state"]][data["district"]]
 
     def get_available_slots(self):
+        today = datetime.today().date()
+        day = str(today.day)
+        month = str(today.month)
+        year = str(today.year)
+        day = day if len(day) == 2 else "0"+day
+        month = month if len(day) == 2 else "0"+month
+
+        date = day + "-" + month + "-" + year
+        if self.data["by_district"] == 1:
+            self.url = f"https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id={self.dist_id}&date={date}"
+        else:
+            pin = self.data["pin"]
+            self.url = f"https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByPin?pincode={pin}&date={date}"
+
         proxies = {
          "http": "http://14.140.131.82:3128",
          "https": "http://14.140.131.82:3128"
