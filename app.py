@@ -44,6 +44,7 @@ class data(db.Model):
 def home():
     db.create_all()
     states = district_ids.keys()
+    user_count = len(data.query.all())
     if request.method == "POST":
         email = request.form["email"]
         regex = '^(\w|\.|\_|\-)+[@](\w|\_|\-|\.)+[.]\w{2,3}$'
@@ -112,7 +113,7 @@ def home():
         flash("you are sucessfully subscribed","success")
         return redirect(url_for("home"))
 
-    return render_template("index.html",states=states)
+    return render_template("index.html",states=states,user_count=user_count)
 @app.route("/unsubscribe",methods=["POST","GET"])
 def unsubscribe():
     if request.method == 'POST':

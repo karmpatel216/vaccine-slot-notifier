@@ -45,7 +45,8 @@
 
 <body>
         <script src="{{url_for('static', filename = 'js/jquery.js') }}"></script>
-         <!-- End header top -->
+        <header>
+            <!-- End header top -->
             <!-- Start main menu area -->
             <div class="main-menu-area" id="sticker">
                 <div class="container">
@@ -73,11 +74,12 @@
                     </div>
                 </div>
             </div>
+              </header>
         <section class="donate-page-area pt-90 pb-80" id="subscribe">
          <!-- Start main area -->
     <div class="main-area">
         <!-- Start header -->
-        <header>
+
 
 
 
@@ -252,7 +254,11 @@
                     </div>
                 </div>
             </div>
+               <div style="padding-left :40%;">
+            <h5>User count: {{ user_count }}</h5>
+        </div>
         </section>
+
 
 </form>
 
