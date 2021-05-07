@@ -14,7 +14,7 @@ while True:
     objects = pickle.load(open("pickleobjs", "rb"))
     for user in rows:
         email = user.email
-        print(f"user={email}")
+        #print(f"user={email}")
         if objects[email]:
             obj = objects[email]
             slots = obj.get_available_slots()
@@ -30,12 +30,15 @@ while True:
                     #print(formatted_slots)
                     if user.by == "Area":
                         msg.body = "Dear user,\nFollowing slots are available in " + str(user.district) +"\nAge group:"+ str(user.min_age) +"\n" + str(formatted_slots)
+                        print(f"vaccine is available in {user.district}")
                     else:
                         msg.body = "Dear user,\nFollowing slots are available in "+ str(user.pin) +"\nAge group:"+ str(user.min_age) +"\n" + str(formatted_slots)
+                        print(f"vaccine is available in {user.pin}")
                     mail.send(msg)
-                    print("*******************body*********************")
+
                     #print(msg.body)
                     print(f"mail sent to-{email}")
         else:
             print("object not found")
+    print("*********************************")
     time.sleep(600)
