@@ -20,18 +20,18 @@ while True:
         obj = objects[key]["VaccineSlot_Object"]
         if obj.data["by_district"] == 1:
             district_id, min_age = key.split(":")
-            district = district_id
+            #district = district_id
         else:
             pin, min_age = key.split(":")
         emails = objects[key]["emails"]
         if emails == []:
             continue
         print("users:",emails)
-        slots = obj.get_available_slots()
+        slots,district = obj.get_available_slots()
         #print(slots)
         if slots != {}:
             with app.app_context():
-                msg = Message('Vaccine Slot is Available', sender=app.config['MAIL_USERNAME'], recipients=emails)
+                msg = Message('Vaccine Slot is Available', sender=app.config['MAIL_USERNAME'], bcc=emails)
                 n_centers = len(slots)
                 if n_centers < 50:
                     formatted_slots = format_slots(slots)
