@@ -60,13 +60,16 @@ class VaccineSlot:
         #resp = eval(requests.get(self.url, proxies=urllib.request.getproxies()).text)
         #resp = eval(urllib.request.urlopen(self.url).read().decode('utf-8'))
         available = {}
+        district_name = ""
         try:
             resp = requests.get(self.url, headers=headers).content
             #print("responce:",resp)
             resp = eval(resp.decode('utf-8'))
             all_centers = resp['centers']
+
             if len(all_centers) > 0:
                 VaccineSlot.collect_data(resp,self.data["by_district"])
+                district_name =  resp["centers"][0]["district_name"]
             min_age = self.data['min_age']
             #print("age=",min_age)
 
@@ -85,6 +88,6 @@ class VaccineSlot:
                             #print("available!")
         except Exception as e:
             traceback.print_exc()
-        return available
+        return [available,district_name]
 
 
