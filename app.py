@@ -7,6 +7,11 @@ import pickle
 from flask_mail import Mail, Message
 import os
 import re
+import pytz
+
+# get the standard UTC time
+UTC = pytz.utc
+IST = pytz.timezone('Asia/Kolkata')
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///vaccine.db'
@@ -100,8 +105,8 @@ def home():
         if data.query.filter_by(email=email).first():
             flash("email id already taken","danger")
             return redirect(url_for("home"))
-
-        row = data(by=by, pin=pin,district=district,state=state,min_age=age,email=email,timestamp=datetime.today())
+        timestamp =  datetime.now(IST)
+        row = data(by=by, pin=pin,district=district,state=state,min_age=age,email=email,timestamp=timestamp)
         db.session.add(row)
         db.session.commit()
 
