@@ -101,7 +101,7 @@ def home():
             flash("email id already taken","danger")
             return redirect(url_for("home"))
 
-        row = data(by=by, pin=pin,district=district,state=state,min_age=age,email=email,timestamp=str(datetime.now()))
+        row = data(by=by, pin=pin,district=district,state=state,min_age=age,email=email,timestamp=datetime.today())
         db.session.add(row)
         db.session.commit()
 
