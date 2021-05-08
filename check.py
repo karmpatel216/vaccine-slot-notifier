@@ -20,7 +20,7 @@ while True:
         obj = objects[key]["VaccineSlot_Object"]
         if obj.data["by_district"] == 1:
             district_id, min_age = key.split(":")
-            district = obj.data["district"]
+            district = district_id
         else:
             pin, min_age = key.split(":")
         emails = objects[key]["emails"]
