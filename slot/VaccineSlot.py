@@ -7,13 +7,12 @@ from datetime import datetime
 class VaccineSlot:
 
     def __init__(self,data):
+        '''
+        :param data: ["by_district", "district_id", "pin", "min_age"]:
+        '''
         self.data = data
-        date = data["date"]
         if data["by_district"] == 1:
-
-            with open("district_ids.json", "r") as fp:
-                district_ids = json.load(fp)
-                self.dist_id = district_ids[data["state"]][data["district"]]
+            self.dist_id = data["district_id"]
 
     def get_available_slots(self):
         today = datetime.today().date()
@@ -43,7 +42,7 @@ class VaccineSlot:
         resp = eval(resp.decode('utf-8'))
         all_centers = resp['centers']
         min_age = self.data['min_age']
-        print("age=",min_age)
+        #print("age=",min_age)
         available = {}
         for each in all_centers:
             center_name = each["name"].strip()

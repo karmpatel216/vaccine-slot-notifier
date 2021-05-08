@@ -48,12 +48,19 @@ class Feedback(db.Model):
 
     def __repr__(self):
         return f"Feedback('{self.name}')"
+def get_dist_id(state,district):
+    with open("district_ids.json", "r") as fp:
+        district_ids = json.load(fp)
+        dist_id = district_ids[state][district]
+    return dist_id
 
 @app.route("/",methods=["POST","GET"])
 def home():
     db.create_all()
     states = district_ids.keys()
     user_count = len(data.query.all())
+
+    #data validation
     if request.method == "POST":
         email = request.form["email"]
         regex = '^(\w|\.|\_|\-)+[@](\w|\_|\-|\.)+[.]\w{2,3}$'
@@ -98,26 +105,26 @@ def home():
         db.session.commit()
 
         #make a object
-        date = datetime.today().date()
-        day = str(date.day) if len(str(date.day)) == 2 else "0" + str(date.day)
-        month = str(date.month) if len(str(date.month)) == 2 else "0" + str(date.month)
-        year = str(date.year)
-        date = f"{day}-{month}-{year}"
         min_age = 18 if age == "18-44" else 45
-        info = {"date": date, "min_age":min_age}
+        info = {"min_age":min_age}
         if by == "Area":
             info["by_district"] = 1
-            info["state"] = state
-            info["district"] = district
+            info["district_id"] = str(get_dist_id(state,district))
+            key = info["district_id"] + ":" + str(min_age)
         else:
             info["by_district"] = 0
             info["pin"] = pin
+            key = str(pin) + ":" + str(min_age)
         obj = VaccineSlot(info)
 
-        objects = pickle.load(open(os.path.join(current_path,"pickleobjs"), "rb"))
-        #objects = {}
-        objects[email] = obj
-        pickle.dump(objects, open(os.path.join(current_path,"pickleobjs"), "wb"))
+        objects = pickle.load(open(os.path.join(current_path,"user_groups"), "rb"))
+        try:
+            objects[key]["emails"].append(email)
+            print(f"Area already exist")
+        except:
+            objects[key] = {"VaccineSlot_Object":obj,"emails":[email]}
+            print(f"New Area key created")
+        pickle.dump(objects, open(os.path.join(current_path,"user_groups"), "wb"))
 
         flash("you are sucessfully subscribed","success")
         return redirect(url_for("home"))
@@ -132,26 +139,45 @@ def unsubscribe():
             flash("Enter Valid Email id", "danger")
             return redirect(url_for("home"))
 
-        row = data.query.filter_by(email=email)
-        if row.first():
-            row.delete()
-            db.session.commit()
-            objects = pickle.load(open(os.path.join(current_path, "pickleobjs"), "rb"))
-            print(f"before:{objects}")
+        user_record = data.query.filter_by(email=email)
+        if user_record.first():
+            user =  user_record.first()
+            min_age = str(user.min_age)[:2]
+            if user.by == "Area":
+                district = user.district
+                state = user.state
+                dist_id = str(get_dist_id(state,district))
+                key = dist_id + ":" + min_age
+            else:
+                pin = str(user.pin)
+                key = pin + ":" + min_age
+
+
+            objects = pickle.load(open(os.path.join(current_path, "user_groups"), "rb"))
+            #print(f"before:{objects}")
             try:
-                del objects[email]
-                pickle.dump(objects, open(os.path.join(current_path, "pickleobjs"), "wb"))
-            except:
-                print("key not found")
-            print(f"after:{objects}")
+                if email in objects[key]["emails"]:
+                    objects[key]["emails"].remove(email)
+                    if objects[key]["emails"] == []:
+                        del objects[key]
+                else:
+                    flash("email id not found in objects file","danger")
+                    return redirect(url_for("home"))
+
+
+            except Exception:
+                flash("Exception occured in removing email","danger")
+                return redirect(url_for("home"))
+
+            #print(f"after:{objects}")
+            pickle.dump(objects, open(os.path.join(current_path, "user_groups"), "wb"))
+            user_record.delete()
+            db.session.commit()
             flash("Unsubscibed!","success")
         else:
             flash("Email id does not exist!","danger")
 
     return redirect(url_for("home"))
-        #delete from database
-
-
 
 
 @app.route("/district",methods=["POST","GET"])
