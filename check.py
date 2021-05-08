@@ -47,7 +47,7 @@ while True:
                 mail.send(msg)
 
                 #print(msg.body)
-                print(f"{datetime.today()} - mail sent to-{emails}")
+                print(f"{datetime.today()} - mail sent to-{emails} $$$$$$$$$$$$$$$$$$$$$$$$$")
 
 
     print("*********************************")
