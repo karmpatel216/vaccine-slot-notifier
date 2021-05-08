@@ -1,5 +1,6 @@
-from app import db, data
-records = data.query.all()
+from app import db, data, permanent_data
+records = permanent_data.query.all()
+db.create_all()
 for ind,each in enumerate(records):
     print(ind+1,end="\t")
     print(f"{str(each.timestamp):10s}",end="\t")
