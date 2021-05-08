@@ -19,7 +19,14 @@ class VaccineSlot:
     @staticmethod
     def collect_data(json_data, by_district):
         if by_district == 1:
-            fname = json_data["centers"][0]["state_name"] + "_" + json_data["centers"][0]["district_name"]
+            fname = ""
+            words  = json_data["centers"][0]["state_name"].split(" ")
+            for word in words:
+                fname += word
+            fname+="_"
+            words = json_data["centers"][0]["district_name"].split(" ")
+            for word in words:
+                fname += word
             file_name = "response_data/district/" + str(fname) + ".csv"
         else:
             fname = json_data["centers"][0]["pincode"]
