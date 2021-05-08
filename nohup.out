@@ -1,200 +1,1190 @@
-/home/ubuntu/.local/lib/python3.6/site-packages/flask_sqlalchemy/__init__.py:873: FSADeprecationWarning: SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and will be disabled by default in the future.  Set it to True or False to suppress this warning.
-  'SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and '
-Traceback (most recent call last):
-  File "/home/ubuntu/.local/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1764, in _execute_context
-    cursor, statement, parameters, context
-  File "/home/ubuntu/.local/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 717, in do_execute
-    cursor.execute(statement, parameters)
-sqlite3.OperationalError: no such table: data
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "check.py", line 13, in <module>
-    rows = data.query.all()
-  File "/home/ubuntu/.local/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 2699, in all
-    return self._iter().all()
-  File "/home/ubuntu/.local/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 2837, in _iter
-    execution_options={"_sa_orm_load_options": self.load_options},
-  File "/home/ubuntu/.local/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 1675, in execute
-    result = conn._execute_20(statement, params or {}, execution_options)
-  File "/home/ubuntu/.local/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1578, in _execute_20
-    return meth(self, args_10style, kwargs_10style, execution_options)
-  File "/home/ubuntu/.local/lib/python3.6/site-packages/sqlalchemy/sql/elements.py", line 321, in _execute_on_connection
-    self, multiparams, params, execution_options
-  File "/home/ubuntu/.local/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1457, in _execute_clauseelement
-    cache_hit=cache_hit,
-  File "/home/ubuntu/.local/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1807, in _execute_context
-    e, statement, parameters, cursor, context
-  File "/home/ubuntu/.local/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1988, in _handle_dbapi_exception
-    sqlalchemy_exception, with_traceback=exc_info[2], from_=e
-  File "/home/ubuntu/.local/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
-    raise exception
-  File "/home/ubuntu/.local/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1764, in _execute_context
-    cursor, statement, parameters, context
-  File "/home/ubuntu/.local/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 717, in do_execute
-    cursor.execute(statement, parameters)
-sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: data
-[SQL: SELECT data.id AS data_id, data."by" AS data_by, data.pin AS data_pin, data.district AS data_district, data.state AS data_state, data.min_age AS data_min_age, data.email AS data_email 
-FROM data]
-(Background on this error at: http://sqlalche.me/e/14/e3q8)
-/home/ubuntu/.local/lib/python3.6/site-packages/flask_sqlalchemy/__init__.py:873: FSADeprecationWarning: SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and will be disabled by default in the future.  Set it to True or False to suppress this warning.
-  'SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and '
-Traceback (most recent call last):
-  File "/home/ubuntu/.local/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1764, in _execute_context
-    cursor, statement, parameters, context
-  File "/home/ubuntu/.local/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 717, in do_execute
-    cursor.execute(statement, parameters)
-sqlite3.OperationalError: no such table: data
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "check.py", line 13, in <module>
-    rows = data.query.all()
-  File "/home/ubuntu/.local/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 2699, in all
-    return self._iter().all()
-  File "/home/ubuntu/.local/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 2837, in _iter
-    execution_options={"_sa_orm_load_options": self.load_options},
-  File "/home/ubuntu/.local/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 1675, in execute
-    result = conn._execute_20(statement, params or {}, execution_options)
-  File "/home/ubuntu/.local/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1578, in _execute_20
-    return meth(self, args_10style, kwargs_10style, execution_options)
-  File "/home/ubuntu/.local/lib/python3.6/site-packages/sqlalchemy/sql/elements.py", line 321, in _execute_on_connection
-    self, multiparams, params, execution_options
-  File "/home/ubuntu/.local/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1457, in _execute_clauseelement
-    cache_hit=cache_hit,
-  File "/home/ubuntu/.local/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1807, in _execute_context
-    e, statement, parameters, cursor, context
-  File "/home/ubuntu/.local/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1988, in _handle_dbapi_exception
-    sqlalchemy_exception, with_traceback=exc_info[2], from_=e
-  File "/home/ubuntu/.local/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
-    raise exception
-  File "/home/ubuntu/.local/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1764, in _execute_context
-    cursor, statement, parameters, context
-  File "/home/ubuntu/.local/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 717, in do_execute
-    cursor.execute(statement, parameters)
-sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: data
-[SQL: SELECT data.id AS data_id, data."by" AS data_by, data.pin AS data_pin, data.district AS data_district, data.state AS data_state, data.min_age AS data_min_age, data.email AS data_email 
-FROM data]
-(Background on this error at: http://sqlalche.me/e/14/e3q8)
-/home/ubuntu/.local/lib/python3.6/site-packages/flask_sqlalchemy/__init__.py:873: FSADeprecationWarning: SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and will be disabled by default in the future.  Set it to True or False to suppress this warning.
-  'SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and '
-Traceback (most recent call last):
-  File "/home/ubuntu/.local/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1764, in _execute_context
-    cursor, statement, parameters, context
-  File "/home/ubuntu/.local/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 717, in do_execute
-    cursor.execute(statement, parameters)
-sqlite3.OperationalError: no such table: data
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "check.py", line 13, in <module>
-    rows = data.query.all()
-  File "/home/ubuntu/.local/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 2699, in all
-    return self._iter().all()
-  File "/home/ubuntu/.local/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 2837, in _iter
-    execution_options={"_sa_orm_load_options": self.load_options},
-  File "/home/ubuntu/.local/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 1675, in execute
-    result = conn._execute_20(statement, params or {}, execution_options)
-  File "/home/ubuntu/.local/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1578, in _execute_20
-    return meth(self, args_10style, kwargs_10style, execution_options)
-  File "/home/ubuntu/.local/lib/python3.6/site-packages/sqlalchemy/sql/elements.py", line 321, in _execute_on_connection
-    self, multiparams, params, execution_options
-  File "/home/ubuntu/.local/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1457, in _execute_clauseelement
-    cache_hit=cache_hit,
-  File "/home/ubuntu/.local/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1807, in _execute_context
-    e, statement, parameters, cursor, context
-  File "/home/ubuntu/.local/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1988, in _handle_dbapi_exception
-    sqlalchemy_exception, with_traceback=exc_info[2], from_=e
-  File "/home/ubuntu/.local/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
-    raise exception
-  File "/home/ubuntu/.local/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1764, in _execute_context
-    cursor, statement, parameters, context
-  File "/home/ubuntu/.local/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 717, in do_execute
-    cursor.execute(statement, parameters)
-sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: data
-[SQL: SELECT data.id AS data_id, data."by" AS data_by, data.pin AS data_pin, data.district AS data_district, data.state AS data_state, data.min_age AS data_min_age, data.email AS data_email 
-FROM data]
-(Background on this error at: http://sqlalche.me/e/14/e3q8)
-/home/ubuntu/.local/lib/python3.6/site-packages/flask_sqlalchemy/__init__.py:873: FSADeprecationWarning: SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and will be disabled by default in the future.  Set it to True or False to suppress this warning.
-  'SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and '
-Traceback (most recent call last):
-  File "/home/ubuntu/.local/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1764, in _execute_context
-    cursor, statement, parameters, context
-  File "/home/ubuntu/.local/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 717, in do_execute
-    cursor.execute(statement, parameters)
-sqlite3.OperationalError: no such table: data
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "check.py", line 13, in <module>
-    rows = data.query.all()
-  File "/home/ubuntu/.local/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 2699, in all
-    return self._iter().all()
-  File "/home/ubuntu/.local/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 2837, in _iter
-    execution_options={"_sa_orm_load_options": self.load_options},
-  File "/home/ubuntu/.local/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 1675, in execute
-    result = conn._execute_20(statement, params or {}, execution_options)
-  File "/home/ubuntu/.local/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1578, in _execute_20
-    return meth(self, args_10style, kwargs_10style, execution_options)
-  File "/home/ubuntu/.local/lib/python3.6/site-packages/sqlalchemy/sql/elements.py", line 321, in _execute_on_connection
-    self, multiparams, params, execution_options
-  File "/home/ubuntu/.local/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1457, in _execute_clauseelement
-    cache_hit=cache_hit,
-  File "/home/ubuntu/.local/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1807, in _execute_context
-    e, statement, parameters, cursor, context
-  File "/home/ubuntu/.local/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1988, in _handle_dbapi_exception
-    sqlalchemy_exception, with_traceback=exc_info[2], from_=e
-  File "/home/ubuntu/.local/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
-    raise exception
-  File "/home/ubuntu/.local/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1764, in _execute_context
-    cursor, statement, parameters, context
-  File "/home/ubuntu/.local/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 717, in do_execute
-    cursor.execute(statement, parameters)
-sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: data
-[SQL: SELECT data.id AS data_id, data."by" AS data_by, data.pin AS data_pin, data.district AS data_district, data.state AS data_state, data.min_age AS data_min_age, data.email AS data_email 
-FROM data]
-(Background on this error at: http://sqlalche.me/e/14/e3q8)
-/home/ubuntu/.local/lib/python3.6/site-packages/flask_sqlalchemy/__init__.py:873: FSADeprecationWarning: SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and will be disabled by default in the future.  Set it to True or False to suppress this warning.
-  'SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and '
-Traceback (most recent call last):
-  File "/home/ubuntu/.local/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1764, in _execute_context
-    cursor, statement, parameters, context
-  File "/home/ubuntu/.local/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 717, in do_execute
-    cursor.execute(statement, parameters)
-sqlite3.OperationalError: no such table: data
-
-The above exception was the direct cause of the following exception:
-
-Traceback (most recent call last):
-  File "check.py", line 13, in <module>
-    rows = data.query.all()
-  File "/home/ubuntu/.local/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 2699, in all
-    return self._iter().all()
-  File "/home/ubuntu/.local/lib/python3.6/site-packages/sqlalchemy/orm/query.py", line 2837, in _iter
-    execution_options={"_sa_orm_load_options": self.load_options},
-  File "/home/ubuntu/.local/lib/python3.6/site-packages/sqlalchemy/orm/session.py", line 1675, in execute
-    result = conn._execute_20(statement, params or {}, execution_options)
-  File "/home/ubuntu/.local/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1578, in _execute_20
-    return meth(self, args_10style, kwargs_10style, execution_options)
-  File "/home/ubuntu/.local/lib/python3.6/site-packages/sqlalchemy/sql/elements.py", line 321, in _execute_on_connection
-    self, multiparams, params, execution_options
-  File "/home/ubuntu/.local/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1457, in _execute_clauseelement
-    cache_hit=cache_hit,
-  File "/home/ubuntu/.local/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1807, in _execute_context
-    e, statement, parameters, cursor, context
-  File "/home/ubuntu/.local/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1988, in _handle_dbapi_exception
-    sqlalchemy_exception, with_traceback=exc_info[2], from_=e
-  File "/home/ubuntu/.local/lib/python3.6/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
-    raise exception
-  File "/home/ubuntu/.local/lib/python3.6/site-packages/sqlalchemy/engine/base.py", line 1764, in _execute_context
-    cursor, statement, parameters, context
-  File "/home/ubuntu/.local/lib/python3.6/site-packages/sqlalchemy/engine/default.py", line 717, in do_execute
-    cursor.execute(statement, parameters)
-sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: data
-[SQL: SELECT data.id AS data_id, data."by" AS data_by, data.pin AS data_pin, data.district AS data_district, data.state AS data_state, data.min_age AS data_min_age, data.email AS data_email 
-FROM data]
-(Background on this error at: http://sqlalche.me/e/14/e3q8)
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-rutvikpatel90990@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-om000193patel@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+*********************************
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-rutvikpatel90990@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-om000193patel@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+*********************************
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-rutvikpatel90990@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-om000193patel@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+*********************************
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-rutvikpatel90990@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-om000193patel@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+*********************************
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-rutvikpatel90990@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-om000193patel@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+*********************************
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-rutvikpatel90990@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-om000193patel@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+*********************************
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-rutvikpatel90990@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-om000193patel@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+*********************************
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-rutvikpatel90990@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-om000193patel@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+*********************************
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-rutvikpatel90990@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-om000193patel@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+*********************************
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-rutvikpatel90990@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-om000193patel@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+*********************************
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-rutvikpatel90990@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-om000193patel@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+*********************************
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-rutvikpatel90990@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-om000193patel@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+*********************************
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-rutvikpatel90990@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-om000193patel@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+*********************************
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-rutvikpatel90990@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-om000193patel@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+*********************************
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-rutvikpatel90990@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-om000193patel@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+*********************************
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-rutvikpatel90990@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-om000193patel@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+*********************************
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-rutvikpatel90990@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-om000193patel@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+*********************************
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-rutvikpatel90990@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-om000193patel@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+*********************************
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-rutvikpatel90990@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-om000193patel@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+*********************************
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-rutvikpatel90990@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-om000193patel@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+*********************************
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-rutvikpatel90990@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-om000193patel@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+*********************************
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-rutvikpatel90990@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-om000193patel@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+*********************************
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-rutvikpatel90990@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-om000193patel@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+*********************************
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-rutvikpatel90990@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-om000193patel@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+*********************************
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-rutvikpatel90990@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-om000193patel@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+*********************************
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-rutvikpatel90990@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-om000193patel@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+*********************************
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-rutvikpatel90990@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-om000193patel@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+*********************************
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-rutvikpatel90990@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-om000193patel@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+*********************************
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-rutvikpatel90990@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-om000193patel@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+*********************************
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-rutvikpatel90990@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-om000193patel@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+*********************************
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-rutvikpatel90990@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-om000193patel@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+*********************************
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-rutvikpatel90990@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-om000193patel@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+*********************************
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-rutvikpatel90990@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-om000193patel@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+*********************************
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-rutvikpatel90990@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-om000193patel@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+*********************************
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-rutvikpatel90990@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-om000193patel@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+*********************************
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-rutvikpatel90990@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-om000193patel@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+*********************************
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-rutvikpatel90990@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-om000193patel@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+*********************************
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-rutvikpatel90990@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-om000193patel@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+*********************************
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-rutvikpatel90990@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-om000193patel@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+*********************************
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-rutvikpatel90990@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-om000193patel@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+*********************************
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-rutvikpatel90990@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-om000193patel@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+*********************************
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-rutvikpatel90990@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-om000193patel@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+*********************************
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-rutvikpatel90990@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-om000193patel@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+*********************************
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-rutvikpatel90990@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-om000193patel@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+*********************************
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-rutvikpatel90990@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-om000193patel@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in Ahmedabad
+mail sent to-dhwanid2001@gmail.com
+age= 45
+age= 45
+age= 45
+age= 45
+age= 45
+age= 45
+*********************************
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-rutvikpatel90990@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in 382765
+mail sent to-om000193patel@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in Ahmedabad
+mail sent to-dhwanid2001@gmail.com
+age= 45
+age= 45
+age= 45
+age= 45
+age= 45
+age= 45
+*********************************
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in Ahmedabad
+mail sent to-dhwanid2001@gmail.com
+age= 45
+age= 45
+age= 45
+age= 45
+age= 45
+age= 45
+*********************************
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in Ahmedabad
+mail sent to-dhwanid2001@gmail.com
+age= 45
+age= 45
+age= 45
+age= 45
+age= 45
+age= 45
+*********************************
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in Ahmedabad
+mail sent to-dhwanid2001@gmail.com
+age= 45
+age= 45
+age= 45
+age= 45
+age= 45
+age= 45
+*********************************
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in Ahmedabad
+mail sent to-dhwanid2001@gmail.com
+age= 45
+age= 45
+age= 45
+age= 45
+age= 45
+age= 45
+*********************************
+age= 18
+age= 18
+vaccine is available in Kutch
+mail sent to-psangita492@gmail.com
+age= 18
+age= 18
+vaccine is available in Kutch
+mail sent to-zeelpatel48964896@gmail.com
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in Ahmedabad
+mail sent to-dhwanid2001@gmail.com
+age= 45
+age= 45
+age= 45
+age= 45
+age= 45
+age= 45
+*********************************
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 18
+age= 45
+vaccine is available in Ahmedabad
+mail sent to-dhwanid2001@gmail.com
+age= 45
+age= 45
+age= 45
+age= 45
+age= 45
+age= 45
+*********************************
+age= 18
+age= 18
+age= 18
+vaccine is available in Ahmedabad Corporation
+mail sent to-sangita13375@gmail.com
+age= 18
