@@ -35,6 +35,7 @@ class data(db.Model):
     state = db.Column(db.String(50), unique=False, nullable=True)
     min_age = db.Column(db.String(10), unique=False, nullable=False)
     email = db.Column(db.String(50), unique=True, nullable=False)
+    timestamp = db.Column(db.String(50), unique=False, nullable=True)
 
 
     def __repr__(self):
@@ -100,7 +101,7 @@ def home():
             flash("email id already taken","danger")
             return redirect(url_for("home"))
 
-        row = data(by=by, pin=pin,district=district,state=state,min_age=age,email=email)
+        row = data(by=by, pin=pin,district=district,state=state,min_age=age,email=email,timestamp=str(datetime.now()))
         db.session.add(row)
         db.session.commit()
 
