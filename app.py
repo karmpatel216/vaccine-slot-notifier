@@ -46,6 +46,21 @@ class data(db.Model):
     def __repr__(self):
         return f"Data('{self.email}','{self.min_age}','{self.by}')"
 
+class permanent_data(db.Model):
+
+    id = db.Column(db.Integer, primary_key=True)
+    by = db.Column(db.String(20), unique=False, nullable=False)
+    pin = db.Column(db.String(20), unique=False, nullable=True)
+    district = db.Column(db.String(50), unique=False, nullable=True)
+    state = db.Column(db.String(50), unique=False, nullable=True)
+    min_age = db.Column(db.String(10), unique=False, nullable=False)
+    email = db.Column(db.String(50), unique=False, nullable=False)
+    timestamp = db.Column(db.String(50), unique=False, nullable=True)
+
+
+    def __repr__(self):
+        return f"Data('{self.email}','{self.min_age}','{self.by}')"
+
 class Feedback(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
@@ -64,7 +79,8 @@ def get_dist_id(state,district):
 def home():
     db.create_all()
     states = district_ids.keys()
-    user_count = len(data.query.all())
+    active_user_count = len(data.query.all())
+    total_user_count = len(permanent_data.query.all())
 
     #data validation
     if request.method == "POST":
@@ -107,7 +123,9 @@ def home():
             return redirect(url_for("home"))
         timestamp =  datetime.now(IST)
         row = data(by=by, pin=pin,district=district,state=state,min_age=age,email=email,timestamp=timestamp)
+        row2 = permanent_data(by=by, pin=pin, district=district, state=state, min_age=age, email=email, timestamp=timestamp)
         db.session.add(row)
+        db.session.add(row2)
         db.session.commit()
 
         #make a object
@@ -135,7 +153,7 @@ def home():
         flash("you are sucessfully subscribed","success")
         return redirect(url_for("home"))
 
-    return render_template("index.html",states=states,user_count=user_count)
+    return render_template("index.html",states=states,user_count=[active_user_count,total_user_count])
 @app.route("/unsubscribe",methods=["POST","GET"])
 def unsubscribe():
     if request.method == 'POST':
