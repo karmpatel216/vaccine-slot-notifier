@@ -69,9 +69,9 @@ class VaccineSlot:
         district_name = ""
 
         try:
-            resp = eval(requests.get(self.url, proxies=urllib.request.getproxies()).text)
+            #resp = eval(requests.get(self.url, proxies=urllib.request.getproxies()).text)
             #resp = eval(urllib.request.urlopen(self.url).read().decode('utf-8'))
-            #resp = requests.get(self.url, headers=headers).content
+            resp = requests.get(self.url, headers=headers).content
             #print("responce:",resp)
             resp = eval(resp.decode('utf-8'))
             all_centers = resp['centers']
