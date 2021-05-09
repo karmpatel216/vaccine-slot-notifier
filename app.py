@@ -31,6 +31,18 @@ current_path = os.getcwd()
 with open(os.path.join(current_path,"slot","district_ids1.json"), "r") as fp:
     district_ids = json.load(fp)
 
+def calculate_objects():
+    objects = pickle.load(open("user_groups", "rb"))
+    # objects["162:18"]["emails"].remove("karmasmart216@gmail.com")
+    user_count = 0
+    for obj in objects:
+        print(obj)
+        print(objects[obj])
+        user_count += len(objects[obj]["emails"])
+    return user_count
+
+#app.config["USER_OBJECTS"] = calculate_objects()
+
 class data(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
@@ -149,7 +161,7 @@ def home():
             objects[key] = {"VaccineSlot_Object":obj,"emails":[email]}
             print(f"New Area key created")
         pickle.dump(objects, open(os.path.join(current_path,"user_groups"), "wb"))
-
+        #app.config["USER_OBJECTS"] += 1
         flash("you are sucessfully subscribed","success")
         return redirect(url_for("home"))
 
@@ -197,6 +209,7 @@ def unsubscribe():
             pickle.dump(objects, open(os.path.join(current_path, "user_groups"), "wb"))
             user_record.delete()
             db.session.commit()
+            #app.config["USER_OBJECTS"] -= 1
             flash("Unsubscibed!","success")
         else:
             flash("Email id does not exist!","danger")

@@ -12,7 +12,10 @@ def format_slots(slots):
         formatted += str(slots[each]) + "\n"
     return formatted
 
+request_count = 0
+request_threshold = 40
 while True:
+    #n_objects = app.config["USER_OBJECTS"]
     rows = data.query.all()
     objects= pickle.load(open("user_groups", "rb"))
     #objects = pickle.load(open("pickleobjs", "rb"))
@@ -48,7 +51,11 @@ while True:
 
                 #print(msg.body)
                 print(f"{datetime.today()} - mail sent to-{emails} $$$$$$$$$$$$$$$$$$$$$$$$$")
+        time.sleep(2)
+        # request_count += (request_count + 1)%request_threshold
+        # if request_count == 0:
+        #     time.sleep(120)
 
 
     print("*********************************")
-    time.sleep(600)
+
