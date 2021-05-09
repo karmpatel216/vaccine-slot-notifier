@@ -5,6 +5,9 @@ import os
 from datetime import datetime
 from pandas import json_normalize
 import traceback
+import app
+
+
 
 class VaccineSlot:
 
@@ -68,35 +71,34 @@ class VaccineSlot:
         available = {}
         district_name = ""
 
-        try:
-            #resp = eval(requests.get(self.url, proxies=urllib.request.getproxies()).text)
-            #resp = eval(urllib.request.urlopen(self.url).read().decode('utf-8'))
-            resp = requests.get(self.url, headers=headers).content
-            #print("responce:",resp)
-            resp = eval(resp.decode('utf-8'))
-            all_centers = resp['centers']
+        #resp = eval(requests.get(self.url, proxies=urllib.request.getproxies()).text)
+        #resp = eval(urllib.request.urlopen(self.url).read().decode('utf-8'))
+        resp = requests.get(self.url, headers=headers).content
+        #print("responce:",resp)
+        resp = eval(resp.decode('utf-8'))
+        all_centers = resp['centers']
 
-            if len(all_centers) > 0:
-                VaccineSlot.collect_data(resp,self.data["by_district"])
-                district_name =  resp["centers"][0]["district_name"]
-            min_age = self.data['min_age']
-            #print("age=",min_age)
+        if len(all_centers) > 0:
+            VaccineSlot.collect_data(resp,self.data["by_district"])
+            district_name =  resp["centers"][0]["district_name"]
+        min_age = self.data['min_age']
+        #print("age=",min_age)
 
-            for each in all_centers:
-                center_name = each["name"].strip()
-                if each['sessions']:
-                    for sess in each['sessions']:
-                        #print(sess)
-                        if sess['min_age_limit'] == min_age and sess["available_capacity"] >= 2:
-                            data = {"available_capacity": sess["available_capacity"]
-                                , "date": sess["date"]}
-                            if center_name not in available:
-                                available[center_name] = [data]
-                            else:
-                                available[center_name].append(data)
-                            #print("available!")
-        except Exception as e:
-            traceback.print_exc()
+        for each in all_centers:
+            center_name = each["name"].strip()
+            if each['sessions']:
+                for sess in each['sessions']:
+                    #print(sess)
+                    if sess['min_age_limit'] == min_age and sess["available_capacity"] >= 2:
+                        data = {"available_capacity": sess["available_capacity"]
+                            , "date": sess["date"]}
+                        if center_name not in available:
+                            available[center_name] = [data]
+                        else:
+                            available[center_name].append(data)
+                        #print("available!")
+
+
         return [available,district_name]
 
 

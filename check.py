@@ -3,7 +3,7 @@ from app import data
 import time
 from app import mail, Message, app
 from datetime import datetime
-
+import traceback
 
 def format_slots(slots):
     formatted = ""
@@ -30,27 +30,35 @@ while True:
         if emails == []:
             continue
         print("users:",emails)
-        slots,district = obj.get_available_slots()
-        #print(slots)
-        if slots != {}:
-            with app.app_context():
-                msg = Message('Vaccine Slot is Available', sender=app.config['MAIL_USERNAME'], bcc=emails)
-                n_centers = len(slots)
-                if n_centers < 50:
-                    formatted_slots = format_slots(slots)
-                else:
-                    formatted_slots = str(slots)
-                #print(formatted_slots)
-                if obj.data["by_district"] == 1:
-                    msg.body = "Dear user,\nFollowing slots are available in " + str(district) +"\nAge group:"+ str(min_age) +"\n" + str(formatted_slots)
-                    print(f"vaccine is available in {district} for age {min_age}+")
-                else:
-                    msg.body = "Dear user,\nFollowing slots are available in "+ str(pin) +"\nAge group:"+ str(min_age) +"\n" + str(formatted_slots)
-                    print(f"vaccine is available in {pin} for age {min_age}+")
-                mail.send(msg)
+        try:
+            slots,district = obj.get_available_slots()
+            #print(slots)
+            if slots != {}:
+                with app.app_context():
+                    msg = Message('Vaccine Slot is Available', sender=app.config['MAIL_USERNAME'], bcc=emails)
+                    n_centers = len(slots)
+                    if n_centers < 50:
+                        formatted_slots = format_slots(slots)
+                    else:
+                        formatted_slots = str(slots)
+                    #print(formatted_slots)
+                    if obj.data["by_district"] == 1:
+                        msg.body = "Dear user,\nFollowing slots are available in " + str(district) +"\nAge group:"+ str(min_age) +"\n" + str(formatted_slots)
+                        print(f"vaccine is available in {district} for age {min_age}+")
+                    else:
+                        msg.body = "Dear user,\nFollowing slots are available in "+ str(pin) +"\nAge group:"+ str(min_age) +"\n" + str(formatted_slots)
+                        print(f"vaccine is available in {pin} for age {min_age}+")
+                    mail.send(msg)
 
-                #print(msg.body)
-                print(f"{datetime.today()} - mail sent to-{emails} $$$$$$$$$$$$$$$$$$$$$$$$$")
+                    #print(msg.body)
+                    print(f"{datetime.today()} - mail sent to-{emails} $$$$$$$$$$$$$$$$$$$$$$$$$")
+        except Exception as e:
+            traceback.print_exc()
+            msg = Message('Cowin blocked your API', sender=app.config['MAIL_USERNAME'],
+                          recipients=['karmasmart216@gmail.com'])
+            msg.body(e)
+            mail.send(msg)
+            time.sleep(600)
         time.sleep(2)
         # request_count += (request_count + 1)%request_threshold
         # if request_count == 0:
