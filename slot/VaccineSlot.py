@@ -64,12 +64,14 @@ class VaccineSlot:
         }
         headers = {
             'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36'}
-        #resp = eval(requests.get(self.url, proxies=urllib.request.getproxies()).text)
-        #resp = eval(urllib.request.urlopen(self.url).read().decode('utf-8'))
+        
         available = {}
         district_name = ""
+
         try:
-            resp = requests.get(self.url, headers=headers).content
+            resp = eval(requests.get(self.url, proxies=urllib.request.getproxies()).text)
+            #resp = eval(urllib.request.urlopen(self.url).read().decode('utf-8'))
+            #resp = requests.get(self.url, headers=headers).content
             #print("responce:",resp)
             resp = eval(resp.decode('utf-8'))
             all_centers = resp['centers']

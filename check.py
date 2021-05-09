@@ -51,4 +51,4 @@ while True:
 
 
     print("*********************************")
-    time.sleep(120)
+    time.sleep(600)

@@ -1,5 +1,5 @@
 from app import db, data, permanent_data
-records = permanent_data.query.all()
+records = data.query.all()
 db.create_all()
 for ind,each in enumerate(records):
     print(ind+1,end="\t")
